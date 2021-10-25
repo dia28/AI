@@ -20,6 +20,6 @@ public class Main {
         NSW.setNeighbours(Arrays.asList(Q, SA, V));
         V.setNeighbours(Arrays.asList(SA, NSW, T));
 
-        System.out.println(T.getNeighbours());
+        WA.print();
     }
 }
