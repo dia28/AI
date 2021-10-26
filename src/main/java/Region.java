@@ -23,10 +23,21 @@ public class Region {
         return colours;
     }
 
+    public void print(){
+        String string ="Region{" +
+                "name='" + name + '\'' +
+                ", colours=" + colours +
+                ", neighbours= " + neighbours +
+                '}';
+        System.out.println(string);
+    }
+
     @Override
     public String toString() {
         return "Region{" +
-                "neighbours=" + neighbours +
+                "name='" + name + '\'' +
+                ", colours=" + colours +
                 '}';
     }
+
 }
