@@ -30,7 +30,7 @@ public class Main {
         SA.setNeighbours(Arrays.asList(WA,NT));
         NT.setNeighbours(Arrays.asList(WA, SA));
         WA.print();
-
+        
         // List<Region> regions = new ArrayList<>(Arrays.asList(T, WA, NT, SA, V, Q, NSW));
         // MapColoring mc = new MapColoring(7, regions);
         List<Region> regions = new ArrayList<>(Arrays.asList(WA,SA,NT));
