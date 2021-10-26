@@ -26,6 +26,7 @@ public class MapColoring {
     }
 
     public void removeNeighboursColours(int index) {
+        removedColors = new HashMap<>();
         for(int i=0 ; i < numberOfRegions; i++) {
             if(regions.get(i).neighbours.contains(regions.get(index))){
                 removedColors.put(i, assignment.get(index));
@@ -65,7 +66,6 @@ public class MapColoring {
         for( Integer key: removedColors.keySet()) {
             regions.get(key).colours.add(removedColors.get(key));
         }
-        removedColors = new HashMap<>();
     }
 
     public boolean bkt(int currentIndex){
@@ -73,17 +73,19 @@ public class MapColoring {
             System.out.println(this.assignment);
             return true;
         }
-
-
-        for(String color : regions.get(currentIndex).colours){
+        for(Integer colorIndex = 0; colorIndex < regions.get(currentIndex).colours.size(); colorIndex++){
+            String color = regions.get(currentIndex).colours.get(colorIndex);
             assignment.set(currentIndex, color);
+            if(assignmentIsFull()){
+                System.out.println(this.assignment);
+                return true;
+            }
             forwardChecking(currentIndex, color);
             int index = MRV(regions);
-            if(!regions.get(index).colours.isEmpty())
+            if(index != -1 && !regions.get(index).colours.isEmpty())
                 bkt(index);
             reverseChanges(currentIndex);
         }
-
         return false;
     }
 }
