@@ -68,16 +68,19 @@ public class MapColoring {
         }
     }
 
+    boolean found = false;
     public boolean bkt(int currentIndex){
         if(assignmentIsFull()){
             System.out.println(this.assignment);
+            found = true;
             return true;
-        }
-        for(Integer colorIndex = 0; colorIndex < regions.get(currentIndex).colours.size(); colorIndex++){
+        } else if(!found){
+        for(Integer colorIndex = 0; colorIndex < regions.get(currentIndex).colours.size() && !found; colorIndex++){
             String color = regions.get(currentIndex).colours.get(colorIndex);
             assignment.set(currentIndex, color);
             if(assignmentIsFull()){
                 System.out.println(this.assignment);
+                found = true;
                 return true;
             }
             forwardChecking(currentIndex, color);
@@ -85,7 +88,7 @@ public class MapColoring {
             if(index != -1 && !regions.get(index).colours.isEmpty())
                 bkt(index);
             reverseChanges(currentIndex);
-        }
+        }}
         return false;
     }
 }

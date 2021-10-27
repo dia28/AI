@@ -24,7 +24,7 @@ public class Main {
 
         Region WA = new Region("WA", new ArrayList<>(Arrays.asList("red", "green", "blue")));
         Region SA = new Region("SA", new ArrayList<>(Arrays.asList("red", "green")));
-        Region NT = new Region("NT", new ArrayList<>(Arrays.asList("green")));
+        Region NT = new Region("NT", new ArrayList<>(Arrays.asList("green","blue")));
 
         WA.setNeighbours(Arrays.asList(SA,NT));
         SA.setNeighbours(Arrays.asList(WA,NT));
